@@ -15,17 +15,7 @@ public class projectile : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         float moveHorizontal = 1f;
         float moveVertical = 1f;
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            moveHorizontal += Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            moveVertical += Time.deltaTime;
-        }
-        //Store the current vertical input in the float moveVertical.
-
-
+       
         //Use the two store floats to create a new Vector2 variable movement.
         Vector2 movement = new Vector2(moveHorizontal * 30, moveVertical * 30);
 
@@ -37,6 +27,24 @@ public class projectile : MonoBehaviour
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal
+        float moveHorizontal = 0f;
+        float moveVertical = 0f;
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveHorizontal += Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            moveVertical += Time.deltaTime;
+        }
+        //Store the current vertical input in the float moveVertical.
+
+
+        //Use the two store floats to create a new Vector2 variable movement.
+        Vector2 movement = new Vector2(moveHorizontal * 30, moveVertical * 30);
+
+        //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
+        rb2d.AddForce( movement, ForceMode2D.Impulse);
 
     }
 
