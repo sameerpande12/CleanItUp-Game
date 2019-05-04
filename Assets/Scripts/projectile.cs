@@ -21,12 +21,14 @@ public class projectile : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     private void FixedUpdate()
     {
-        if (rigidBody.isKinematic && pointer != null) {
-            if (Input.GetKey(KeyCode.Return)) {
-               
+        if (rigidBody.isKinematic && pointer != null)
+        {
+            if (Input.GetKey(KeyCode.Return))
+            {
+
                 rigidBody.velocity = pointer.transform.position - this.transform.position;
                 rigidBody.bodyType = RigidbodyType2D.Kinematic;
-                rigidBody.isKinematic= false;
+                rigidBody.isKinematic = false;
                 Destroy(pointer);
             }
 

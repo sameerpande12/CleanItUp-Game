@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,7 +191,6 @@ GameObject:
   m_Component:
   - component: {fileID: 308092700}
   - component: {fileID: 308092699}
-  - component: {fileID: 308092701}
   - component: {fileID: 308092702}
   - component: {fileID: 308092703}
   m_Layer: 0
@@ -273,32 +272,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &308092701
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308092698}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0110f41c93f960a45900f248f03c9f01, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -25, y: -8.2}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.5, y: 0}
-  - {x: 103.69466, y: -0.12700462}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
 --- !u!50 &308092702
 Rigidbody2D:
   serializedVersion: 4
@@ -333,7 +306,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 27.928375, y: -9.667561}
+  m_Offset: {x: 27.928375, y: -10.05341}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -344,7 +317,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 103.69313, y: 3.007759}
+  m_Size: {x: 103.69313, y: 2.236061}
   m_EdgeRadius: 0
 --- !u!1 &367683276
 GameObject:
@@ -839,7 +812,7 @@ GameObject:
   - component: {fileID: 1043252061}
   m_Layer: 0
   m_Name: blue_bin2d
-  m_TagString: Untagged
+  m_TagString: DustBin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -900,7 +873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043252056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70.38, y: -2.4, z: 0}
+  m_LocalPosition: {x: 60.6, y: -5, z: 0}
   m_LocalScale: {x: 1.3376361, y: 1.5372751, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
