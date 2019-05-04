@@ -7,7 +7,7 @@ public class projectile : MonoBehaviour
     public float speed;             //Floating point variable to store the player's movement speed.
 
     private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
-
+    private CircleCollider2D mycollider;
     // Use this for initialization
     void Start()
     {
