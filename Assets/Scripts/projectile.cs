@@ -17,7 +17,7 @@ public class projectile : MonoBehaviour
     private int garbageCount = 0;
     Vector2 zero_vector;
     Vector2 vector_temp;
-
+    private timerScript timer;
     void Start()
     {
         //Get and store a reference to the Rigidbody2D component so that we can access it.
@@ -34,6 +34,9 @@ public class projectile : MonoBehaviour
         pointer = GameObject.Find("pointer");
         zero_vector = Vector2.zero;
         shootButton = GameObject.Find("Button");
+
+
+        timer = GameObject.Find("TimeKeeper").GetComponent<timerScript>();
         //Debug.Log("Start Complete");
     }
 
@@ -41,7 +44,7 @@ public class projectile : MonoBehaviour
 
     public void ShootProjectile() {
    //     Debug.Log("Entered shootProjectile()\n");
-        if (rigidBody.isKinematic && pointer.GetComponent<SpriteRenderer>().enabled)
+        if (rigidBody.isKinematic && pointer.GetComponent<SpriteRenderer>().enabled && (!timer.isTimeUp))
         {
      //       Debug.Log("Entered if in shoot");
             
