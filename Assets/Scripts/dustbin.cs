@@ -19,13 +19,56 @@ public class dustbin : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;
-        
-        if (other.tag == "Projectile" )
+
+        if (this.tag == "BlueBin")
         {
-            scoreScript.points = scoreScript.points +5;
-            timerScript.timeLeft = timerScript.timeLeft + 2;//bonus for hitting
-            Destroy(other);
+            if(other.tag == "BlueWaste")
+            {
+                scoreScript.points = scoreScript.points + 5;
+                timerScript.timeLeft = timerScript.timeLeft + 2;
+                
+
+            }
+            else if(other.tag == "GreenWaste" || other.tag == "BlackWaste")
+            {
+                scoreScript.points = scoreScript.points - 3;
+            }
+
         }
+        else if(this.tag == "GreenBin")
+        {
+
+            if (other.tag == "GreenWaste")
+            {
+                scoreScript.points = scoreScript.points + 5;
+                timerScript.timeLeft = timerScript.timeLeft + 2;
+                
+
+            }
+            else if (other.tag == "BlueWaste" || other.tag == "BlackWaste")
+            {
+                scoreScript.points = scoreScript.points - 3;
+            }
+
+        }
+        else if(this.tag == "BlackBin")
+        {
+            if (other.tag == "BlackWaste")
+            {
+                scoreScript.points = scoreScript.points + 5;
+                timerScript.timeLeft = timerScript.timeLeft + 2;
+                
+
+            }
+            else if (other.tag == "BlueWaste" || other.tag == "GreenWaste")
+            {
+                Debug.Log("Penalizing");
+                scoreScript.points = scoreScript.points - 3;
+            }
+        }
+
+        Destroy(other);
+
 
     }
 }

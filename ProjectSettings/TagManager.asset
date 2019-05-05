@@ -6,6 +6,14 @@ TagManager:
   tags:
   - DustBin
   - Projectile
+  - New tag
+  - BlackBin
+  - GreenBin
+  - BlueBin
+  - BlackWaster
+  - BlackWaste
+  - GreenWaste
+  - BlueWaste
   layers:
   - Default
   - TransparentFX
