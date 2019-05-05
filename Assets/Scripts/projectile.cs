@@ -24,51 +24,8 @@ public class projectile : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     private void FixedUpdate()
     {
-        if (rigidBody.isKinematic && pointer != null)
-        {
-            if (Input.GetKey(KeyCode.Return))
-            {
-
-                rigidBody.velocity = pointer.transform.position - this.transform.position;
-                rigidBody.bodyType = RigidbodyType2D.Kinematic;
-                rigidBody.isKinematic = false;
-                Destroy(pointer);
-            }
-
-        }
-
+        
     }
-    /* if (Input.touchCount > 0 &&  rigidBody.isKinematic && pointer != null)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            // Handle finger movements based on touch phase.
-            switch (touch.phase)
-            {
-                // Record initial touch position.
-                case TouchPhase.Began:
-                    TouchTime = Time.time;​
-                    break;
-
-                // Determine direction by comparing the current touch position with the initial one.
-                case TouchPhase.Moved:
-                   
-                    break;
-
-                // Report that a direction has been chosen when the finger is lifted.
-                case TouchPhase.Ended:
-                    float velocity=Time.time-TouchTime;              
-                    vector_temp = pointer.transform.position - this.transform.position;
-                    rigidBody.bodyType = RigidbodyType2D.Kinematic;
-                    float angle=Vector2.angle(vector_temp, zero_vector);
-                    Vector2 new_vel= (velocity*cos(angle),velocity*sin(angle));
-                    rigidBody.velocity=new_vel;                   
-                    rigidBody.isKinematic = false;
-                    Destroy(pointer);                   
-                    break;
-            }
-        }
-
-         */
+         
 
 }
