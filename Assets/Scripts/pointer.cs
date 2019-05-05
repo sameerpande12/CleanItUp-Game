@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class pointer : MonoBehaviour
 {
+    private float offsetX, offsetY;
+    private bool isMoving = false;
     private Rigidbody2D myBody;
+    private float speed = 0.1F;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,36 +17,11 @@ public class pointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool keyPressed = true;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
-            transform.position = transform.position - new Vector3(1, 0, 0);
-
+            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+            transform.Translate(touchDeltaPosition.x * speed, touchDeltaPosition.y * speed, 0);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position = transform.position + new Vector3(1, 0, 0);
-
-        }
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.position = transform.position + new Vector3(0, 1, 0);
-
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.position = transform.position - new Vector3(0, 1, 0);
-        }
-        else keyPressed = false;
-
-        if (keyPressed) {
-            StartCoroutine(waitNow());
-        }
-        
-    }
-    IEnumerator waitNow() {
-        yield return new WaitForSeconds(0.1f);
-        myBody.velocity= new Vector2( 0, 0);
     }
     
 }
