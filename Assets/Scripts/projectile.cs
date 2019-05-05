@@ -11,17 +11,30 @@ public class projectile : MonoBehaviour
     private CircleCollider2D mycollider;
     private GameObject pointer;
     private GameObject shootButton;
+    private GameObject[] garbage;
+    private Vector2 initialPosition;
+    private int currentGarbage = 0;
+    private int garbageCount = 0;
     Vector2 zero_vector;
     Vector2 vector_temp;
-    // Use this for initialization
+
     void Start()
     {
         //Get and store a reference to the Rigidbody2D component so that we can access it.
-        rigidBody = GetComponent<Rigidbody2D>();
+        garbage = new GameObject[transform.childCount];
+        garbageCount = transform.childCount;
+        initialPosition = transform.GetChild(0).position;
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            garbage[i]= transform.GetChild(i).gameObject;
+        }
+
+        rigidBody = garbage[0].GetComponent<Rigidbody2D>();
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
         pointer = GameObject.Find("pointer");
         zero_vector = Vector2.zero;
         shootButton = GameObject.Find("Button");
+        Debug.Log("Start Complete");
     }
 
     
@@ -30,26 +43,60 @@ public class projectile : MonoBehaviour
     {
         GameObject other = collision.gameObject;
         if (other.tag == "DustBin") {
-            Destroy(this.gameObject);
+            Debug.Log("Collision With Dustbin");
         }
+
+        /*
+        if(currentGarbage < garbageCount)
+        {
+            rigidBody = garbage[currentGarbage].GetComponent<Rigidbody2D>();
+            rigidBody.bodyType = RigidbodyType2D.Kinematic;
+            rigidBody.transform.position = initialPosition;
+            pointer.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            Debug.Log("Show score screen");
+
+        }*/
     }
 
 
     public void ShootProjectile() {
-        if (rigidBody.isKinematic && pointer != null)
+        Debug.Log("Entered shootProjectile()\n");
+        if (rigidBody.isKinematic && pointer.GetComponent<SpriteRenderer>().enabled)
         {
-               
+            Debug.Log("Entered if in shoot");
             
-                rigidBody.velocity = pointer.transform.position - this.transform.position;
+                rigidBody.velocity = pointer.transform.position - garbage[currentGarbage].transform.position;
                 rigidBody.bodyType = RigidbodyType2D.Kinematic;
                 rigidBody.isKinematic = false;
-                Destroy(pointer);
+            //pointer.GetComponent<SpriteRenderer>().enabled = false ;
+            StartCoroutine("updateGun");
                 
-            
 
         }
 
     }
-         
+
+     IEnumerator updateGun()
+    {
+        
+        yield return new WaitForSeconds(1);
+        currentGarbage = currentGarbage + 1;
+        if (currentGarbage < garbageCount)
+        {
+            rigidBody = garbage[currentGarbage].GetComponent<Rigidbody2D>();
+            rigidBody.transform.position = initialPosition;
+            rigidBody.bodyType = RigidbodyType2D.Kinematic;
+            rigidBody.transform.position = initialPosition;
+        }
+        else
+        {
+            Debug.Log("Show Score Screen");
+
+        }
+        
+    }
 
 }
