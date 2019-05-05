@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class projectile : MonoBehaviour
 {
@@ -39,17 +40,25 @@ public class projectile : MonoBehaviour
         }
     }*/
 
-       
-     public void ShootProjectile() {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject other = collision.gameObject;
+        if (other.tag == "DustBin") {
+            Destroy(this.gameObject);
+        }
+    }
+
+
+    public void ShootProjectile() {
         if (rigidBody.isKinematic && pointer != null)
         {
-         
+               
             
                 rigidBody.velocity = pointer.transform.position - this.transform.position;
                 rigidBody.bodyType = RigidbodyType2D.Kinematic;
                 rigidBody.isKinematic = false;
                 Destroy(pointer);
-
+                
             
 
         }
