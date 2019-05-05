@@ -24,21 +24,7 @@ public class projectile : MonoBehaviour
         shootButton = GameObject.Find("Button");
     }
 
-    //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
-    /*private void FixedUpdate()
-    {
-        if (rigidBody.isKinematic && pointer != null) {
-            if (Input.GetButton("Shoot"))
-            {
-                rigidBody.velocity = pointer.transform.position - this.transform.position;
-                rigidBody.bodyType = RigidbodyType2D.Kinematic;
-                rigidBody.isKinematic = false;
-                Destroy(pointer);
-
-            }
-
-        }
-    }*/
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
