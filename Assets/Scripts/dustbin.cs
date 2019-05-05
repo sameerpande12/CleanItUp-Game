@@ -9,20 +9,21 @@ public class dustbin : MonoBehaviour
     private GameObject scoreObject;
     private GameObject timeObject;
     private timerScript timerScript;
-     void Start()
+    void Start()
     { scoreObject = GameObject.Find("ScoreKeeper");
       scoreScript = scoreObject.GetComponent<score>() ;
         timeObject = GameObject.Find("TimeKeeper");
-        timerScript = scoreObject.GetComponent<timerScript>();
+        timerScript = timeObject.GetComponent<timerScript>();
     }
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject other = collision.gameObject;
         
-        if (other.tag == "Projectile" && (!timerScript.isTimeUp))
+        if (other.tag == "Projectile" )
         {
-            scoreScript.points = scoreScript.points + (int)(timerScript.timeLeft+1);
+            scoreScript.points = scoreScript.points +5;
+            timerScript.timeLeft = timerScript.timeLeft + 2;//bonus for hitting
             Destroy(other);
         }
 

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class timerScript : MonoBehaviour
 {
     public Text timerText;
-    public float timeLeft ;
-    public float timeLimit = 10000f;
+    public int timeLeft ;
+    public int timeLimit = 50;//in seconds
     private float startTime;
     public bool isTimeUp = false;
     // Start is called before the first frame update
@@ -20,11 +20,11 @@ public class timerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft = (Time.time - startTime);
+        timeLeft = timeLimit- (int)(Time.time - startTime);
         if (timeLeft > 0)
         {
             string minutes = ((int)(timeLeft / 60)).ToString();
-            string seconds = (timeLeft % 60).ToString("f2");
+            string seconds = (timeLeft % 60).ToString();
             timerText.text = minutes + ":" + seconds;
         }
         else
