@@ -34,39 +34,16 @@ public class projectile : MonoBehaviour
         pointer = GameObject.Find("pointer");
         zero_vector = Vector2.zero;
         shootButton = GameObject.Find("Button");
-        Debug.Log("Start Complete");
+        //Debug.Log("Start Complete");
     }
 
-    
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject other = collision.gameObject;
-        if (other.tag == "DustBin") {
-            Debug.Log("Collision With Dustbin");
-        }
-
-        /*
-        if(currentGarbage < garbageCount)
-        {
-            rigidBody = garbage[currentGarbage].GetComponent<Rigidbody2D>();
-            rigidBody.bodyType = RigidbodyType2D.Kinematic;
-            rigidBody.transform.position = initialPosition;
-            pointer.GetComponent<SpriteRenderer>().enabled = true;
-        }
-        else
-        {
-            Debug.Log("Show score screen");
-
-        }*/
-    }
-
+   
 
     public void ShootProjectile() {
-        Debug.Log("Entered shootProjectile()\n");
+   //     Debug.Log("Entered shootProjectile()\n");
         if (rigidBody.isKinematic && pointer.GetComponent<SpriteRenderer>().enabled)
         {
-            Debug.Log("Entered if in shoot");
+     //       Debug.Log("Entered if in shoot");
             
                 rigidBody.velocity = pointer.transform.position - garbage[currentGarbage].transform.position;
                 rigidBody.bodyType = RigidbodyType2D.Kinematic;
