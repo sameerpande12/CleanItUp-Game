@@ -5,7 +5,7 @@ using UnityEngine;
 public class pointer : MonoBehaviour
 {
     private float offsetX, offsetY;
-    private bool isMoving = false;
+    
     private Rigidbody2D myBody;
     private float speed = 1F;
     // Start is called before the first frame update
