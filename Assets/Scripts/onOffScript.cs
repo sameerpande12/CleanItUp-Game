@@ -10,7 +10,9 @@ public class onOffScript : MonoBehaviour
     [SerializeField] private Button nextLevelButton;
     [SerializeField] private Button previousLevelButton;
     [SerializeField] private GameObject pauseMenuUI;
-    
+    [SerializeField] private Text panelText;
+    [SerializeField] private Text ScoreText;
+    private bool  isGameOver;
     //private bool isPaused = false;
     
     // Start is called before the first frame update
@@ -21,6 +23,8 @@ public class onOffScript : MonoBehaviour
         nextLevelButton.onClick.AddListener(nextLevel);
         previousLevelButton.onClick.AddListener(previousLevel);
         pauseMenuUI.SetActive(false);
+        panelText.text = "Paused";
+        isGameOver = false;
     }
 
     void pauseGame()
@@ -33,7 +37,12 @@ public class onOffScript : MonoBehaviour
     void resumeGame()
     {
         Time.timeScale = 1f;
-       // isPaused = false;
+        if (isGameOver)
+        {
+            pauseMenuUI.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+            
+        }
         pauseMenuUI.SetActive(false);
 
     }
@@ -94,6 +103,14 @@ public class onOffScript : MonoBehaviour
             Time.timeScale = 1f;
             SceneManager.LoadScene("Level4", LoadSceneMode.Single);
         }
+    }
+
+    public void gameOver()
+    {
+        panelText.text = ScoreText.text;
+        isGameOver = true;
+        Time.timeScale = 0f;
+        pauseMenuUI.SetActive(true);
     }
     
     

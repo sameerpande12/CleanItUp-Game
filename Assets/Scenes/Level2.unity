@@ -2442,7 +2442,7 @@ GameObject:
   - component: {fileID: 1028157649}
   - component: {fileID: 1028157648}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PanelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2590,6 +2590,8 @@ MonoBehaviour:
   nextLevelButton: {fileID: 1265624678}
   previousLevelButton: {fileID: 1368320046}
   pauseMenuUI: {fileID: 1529692220}
+  panelText: {fileID: 1028157648}
+  ScoreText: {fileID: 1765861364}
 --- !u!4 &1061014837
 Transform:
   m_ObjectHideFlags: 0

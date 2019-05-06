@@ -21,10 +21,12 @@ public class projectile : MonoBehaviour
     Vector2 vector_temp;
     private powerScript powScript;
     private timerScript timer;
+    private onOffScript switchScript;
     void Start()
     {
         currentGarbage = 0;
         force = 500f;
+        
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         garbage = new GameObject[transform.childCount];
         garbageCount = transform.childCount;
@@ -34,6 +36,7 @@ public class projectile : MonoBehaviour
             garbage[i] = transform.GetChild(i).gameObject;
         }
         powScript = GameObject.Find("Scrollbar").GetComponent<powerScript>();
+        switchScript =  GameObject.Find("OnOffManager").GetComponent<onOffScript>();
         rigidBody = garbage[0].GetComponent<Rigidbody2D>();
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
         nameText.text = garbage[currentGarbage].name;
@@ -81,8 +84,8 @@ public class projectile : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(10);
-            Debug.Log("Show Score Screen");
-            SceneManager.LoadScene("ScoreScene", LoadSceneMode.Single);
+            switchScript.gameOver();
+            
         }
 
         yield return new WaitForSeconds(9);//object deleted automatically after 10 seconds;
