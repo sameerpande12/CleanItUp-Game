@@ -78,7 +78,7 @@ public class projectile : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(9)//object deleted automatically after 10 seconds;
+        yield return new WaitForSeconds(9);//object deleted automatically after 10 seconds;
         if(garbage[garbageIndex] != null)
         {
             Destroy(garbage[garbageIndex]);
