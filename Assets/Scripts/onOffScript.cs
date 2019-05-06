@@ -19,6 +19,7 @@ public class onOffScript : MonoBehaviour
         pauseButton.onClick.AddListener(pauseGame);
         resumeButton.onClick.AddListener(resumeGame);
         nextLevelButton.onClick.AddListener(nextLevel);
+        previousLevelButton.onClick.AddListener(previousLevel);
         pauseMenuUI.SetActive(false);
     }
 
@@ -38,24 +39,30 @@ public class onOffScript : MonoBehaviour
     }
     void nextLevel()
     { string sceneName = SceneManager.GetActiveScene().name;
+        
         if(sceneName == "Level1")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level2", LoadSceneMode.Single);
         }
         else if(sceneName == "Level2")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level3", LoadSceneMode.Single);
         }
         else if (sceneName == "Level3")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level4", LoadSceneMode.Single);
         }
         else if (sceneName == "Level4")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level5", LoadSceneMode.Single);
         }
         else if (sceneName == "Level5")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("LevelSelector", LoadSceneMode.Single);
         }
     }
@@ -64,22 +71,27 @@ public class onOffScript : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "Level1")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("LevelSelector", LoadSceneMode.Single);
         }
         else if (sceneName == "Level2")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level1", LoadSceneMode.Single);
         }
         else if (sceneName == "Level3")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level2", LoadSceneMode.Single);
         }
         else if (sceneName == "Level4")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level3", LoadSceneMode.Single);
         }
         else if (sceneName == "Level5")
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Level4", LoadSceneMode.Single);
         }
     }
