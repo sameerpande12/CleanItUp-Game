@@ -60,8 +60,26 @@ public class projectile : MonoBehaviour
         }
 
     }
+    public void ShootProjectilePower(float pow)
+    {
+        //     Debug.Log("Entered shootProjectile()\n");
+        if (rigidBody.isKinematic && pointer.GetComponent<SpriteRenderer>().enabled && (!timer.isTimeUp))
+        {
+            //       Debug.Log("Entered if in shoot");
+            Vector2 pos_vector= pointer.transform.position - garbage[currentGarbage].transform.position;
+            float x_comp = pow * (pos_vector[0] / Mathf.Sqrt(pos_vector[0] * pos_vector[0] + pos_vector[1] * pos_vector[1]));
+            float y_comp = pow * (pos_vector[1] / Mathf.Sqrt(pos_vector[0] * pos_vector[0] + pos_vector[1] * pos_vector[1]));
+            rigidBody.velocity = new Vector2(x_comp, y_comp);
+            rigidBody.bodyType = RigidbodyType2D.Kinematic;
+            rigidBody.isKinematic = false;
+            //pointer.GetComponent<SpriteRenderer>().enabled = false ;
+            StartCoroutine(updateGun(currentGarbage));
 
-     IEnumerator updateGun(int garbageIndex)
+        }
+
+    }
+
+    IEnumerator updateGun(int garbageIndex)
     {
         
         yield return new WaitForSeconds(1);
