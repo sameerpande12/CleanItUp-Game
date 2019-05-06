@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class projectile : MonoBehaviour
 {
-                 //Floating point variable to store the player's movement speed.
-
+    //Floating point variable to store the player's movement speed.
+    public float force = 500f;
     private Rigidbody2D rigidBody;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     private CircleCollider2D mycollider;
     private GameObject pointer;
@@ -18,10 +18,11 @@ public class projectile : MonoBehaviour
     public Text nameText;
     Vector2 zero_vector;
     Vector2 vector_temp;
-    
+    private powerScript powScript;
     private timerScript timer;
     void Start()
     { currentGarbage = 0;
+        force = 500f;
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         garbage = new GameObject[transform.childCount];
         garbageCount = transform.childCount;
@@ -30,7 +31,7 @@ public class projectile : MonoBehaviour
         {
             garbage[i]= transform.GetChild(i).gameObject;
         }
-
+        powScript = GameObject.Find("Scrollbar").GetComponent<powerScript>();
         rigidBody = garbage[0].GetComponent<Rigidbody2D>();
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
         nameText.text = garbage[currentGarbage].name;
@@ -51,7 +52,7 @@ public class projectile : MonoBehaviour
         {
      //       Debug.Log("Entered if in shoot");
             
-                rigidBody.velocity = pointer.transform.position - garbage[currentGarbage].transform.position;
+                rigidBody.velocity = force * powerScript.power * (pointer.transform.position - garbage[currentGarbage].transform.position)/(Vector2.Distance(garbage[currentGarbage].transform.position,pointer.transform.position));
                 rigidBody.bodyType = RigidbodyType2D.Kinematic;
                 rigidBody.isKinematic = false;
             //pointer.GetComponent<SpriteRenderer>().enabled = false ;
