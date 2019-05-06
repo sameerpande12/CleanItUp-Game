@@ -13,6 +13,7 @@ public class projectile : MonoBehaviour
     private GameObject shootButton;
     private GameObject[] garbage;
     private Vector2 initialPosition;
+    private score scoreScript;
     private int currentGarbage = 0;
     private int garbageCount = 0;
     Vector2 zero_vector;
@@ -64,6 +65,10 @@ public class projectile : MonoBehaviour
         
         yield return new WaitForSeconds(1);
         currentGarbage = currentGarbage + 1;
+        if (currentGarbage > scoreScript.count)
+        {
+            scoreScript.count = 0;
+        }
         if (currentGarbage < garbageCount)
         {
             rigidBody = garbage[currentGarbage].GetComponent<Rigidbody2D>();
