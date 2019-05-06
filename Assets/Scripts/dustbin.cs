@@ -26,7 +26,7 @@ public class dustbin : MonoBehaviour
             {
                 scoreScript.points = scoreScript.points + 5;
                 timerScript.timeLeft = timerScript.timeLeft + 2;
-                
+              
 
             }
             else if(other.tag == "GreenWaste" || other.tag == "BlackWaste")

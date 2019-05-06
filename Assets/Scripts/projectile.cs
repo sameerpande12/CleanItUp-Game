@@ -17,6 +17,7 @@ public class projectile : MonoBehaviour
     private int garbageCount = 0;
     Vector2 zero_vector;
     Vector2 vector_temp;
+    
     private timerScript timer;
     void Start()
     {
@@ -52,14 +53,13 @@ public class projectile : MonoBehaviour
                 rigidBody.bodyType = RigidbodyType2D.Kinematic;
                 rigidBody.isKinematic = false;
             //pointer.GetComponent<SpriteRenderer>().enabled = false ;
-            StartCoroutine("updateGun");
-                
+            StartCoroutine(updateGun(currentGarbage));
 
         }
 
     }
 
-     IEnumerator updateGun()
+     IEnumerator updateGun(int garbageIndex)
     {
         
         yield return new WaitForSeconds(1);
@@ -73,10 +73,19 @@ public class projectile : MonoBehaviour
         }
         else
         {
+            yield return new WaitForSeconds(10);
             Debug.Log("Show Score Screen");
 
         }
+
+        yield return new WaitForSeconds(9)//object deleted automatically after 10 seconds;
+        if(garbage[garbageIndex] != null)
+        {
+            Destroy(garbage[garbageIndex]);
+        }
+        
         
     }
+    
 
 }
