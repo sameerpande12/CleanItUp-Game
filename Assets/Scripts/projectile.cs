@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class projectile : MonoBehaviour
 {
@@ -81,7 +82,7 @@ public class projectile : MonoBehaviour
         {
             yield return new WaitForSeconds(10);
             Debug.Log("Show Score Screen");
-
+            SceneManager.LoadScene("ScoreScene", LoadSceneMode.Single);
         }
 
         yield return new WaitForSeconds(9);//object deleted automatically after 10 seconds;
