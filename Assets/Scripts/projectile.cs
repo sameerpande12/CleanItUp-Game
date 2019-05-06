@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class projectile : MonoBehaviour
 {
     //Floating point variable to store the player's movement speed.
-    public float force = 500f;
+    public float force = 750f;
     private Rigidbody2D rigidBody;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     private CircleCollider2D mycollider;
     private GameObject pointer;

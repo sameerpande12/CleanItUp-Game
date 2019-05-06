@@ -10,11 +10,13 @@ public class timerScript : MonoBehaviour
     public int timeLimit = 60;//in seconds
     private float startTime;
     public bool isTimeUp = false;
+    private onOffScript switchScript;
     // Start is called before the first frame update
     void Start()
     {
         isTimeUp = false;
         startTime = Time.time;
+        switchScript = GameObject.Find("OnOffManager").GetComponent<onOffScript>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,13 @@ public class timerScript : MonoBehaviour
         {
             isTimeUp = true;
             timerText.text = "Time Up!";
+            StartCoroutine("endGame");
         }
+    }
+
+    IEnumerator endGame()
+    {
+        yield return new WaitForSeconds(1);
+        switchScript.gameOver();
     }
 }
