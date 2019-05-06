@@ -26,14 +26,14 @@ public class dustbin : MonoBehaviour
         {
             if(other.tag == "BlueWaste")
             {
-                scoreScript.points = scoreScript.points + 5;
+                scoreScript.points = scoreScript.points + 50 + (50*(timerScript.timeLeft))/(timerScript.timeLimit);
                 timerScript.timeLeft = timerScript.timeLeft + 2;
               
 
             }
             else if(other.tag == "GreenWaste" || other.tag == "BlackWaste")
             {
-                scoreScript.points = scoreScript.points - 3;
+                scoreScript.points = scoreScript.points - 30;
             }
 
         }
@@ -42,14 +42,14 @@ public class dustbin : MonoBehaviour
 
             if (other.tag == "GreenWaste")
             {
-                scoreScript.points = scoreScript.points + 5;
+                scoreScript.points = scoreScript.points + 50 + (50 * (timerScript.timeLeft)) / (timerScript.timeLimit);
                 timerScript.timeLeft = timerScript.timeLeft + 2;
                 
 
             }
             else if (other.tag == "BlueWaste" || other.tag == "BlackWaste")
             {
-                scoreScript.points = scoreScript.points - 3;
+                scoreScript.points = scoreScript.points - 30;
             }
 
         }
@@ -57,7 +57,7 @@ public class dustbin : MonoBehaviour
         {
             if (other.tag == "BlackWaste")
             {
-                scoreScript.points = scoreScript.points + 5;
+                scoreScript.points = scoreScript.points + 50 + (50 * (timerScript.timeLeft)) / (timerScript.timeLimit);
                 timerScript.timeLeft = timerScript.timeLeft + 2;
                 
 
@@ -65,7 +65,7 @@ public class dustbin : MonoBehaviour
             else if (other.tag == "BlueWaste" || other.tag == "GreenWaste")
             {
                 Debug.Log("Penalizing");
-                scoreScript.points = scoreScript.points - 3;
+                scoreScript.points = scoreScript.points - 30;
             }
         }
 

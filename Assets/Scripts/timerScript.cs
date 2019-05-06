@@ -7,7 +7,7 @@ public class timerScript : MonoBehaviour
 {
     public Text timerText;
     public int timeLeft ;
-    public int timeLimit = 50;//in seconds
+    public int timeLimit = 60;//in seconds
     private float startTime;
     public bool isTimeUp = false;
     // Start is called before the first frame update
