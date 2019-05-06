@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -508,8 +508,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.7
+  m_AngularDrag: 0.5
   m_GravityScale: 20
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -1369,8 +1369,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.3
   m_GravityScale: 20
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -1939,7 +1939,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 20
   m_Material: {fileID: 0}
@@ -2111,8 +2111,8 @@ AreaEffector2D:
   m_ForceMagnitude: 100
   m_ForceVariation: 0
   m_ForceTarget: 0
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 0.2
+  m_AngularDrag: 0.5
 --- !u!61 &1230637628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2156,7 +2156,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6c9ca3c504a9f764e885e24d0aa83130, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2322,7 +2322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431688660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 239, y: 174, z: 0}
+  m_LocalPosition: {x: 496, y: 349, z: 0}
   m_LocalScale: {x: 12.586, y: 11.6640005, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2788,7 +2788,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.04
   m_GravityScale: 20
   m_Material: {fileID: 6200000, guid: 9b4f28422296a404d90640e83759893a, type: 2}
   m_Interpolate: 0
@@ -3097,8 +3097,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.4
+  m_AngularDrag: 0.02
   m_GravityScale: 20
   m_Material: {fileID: 0}
   m_Interpolate: 0
