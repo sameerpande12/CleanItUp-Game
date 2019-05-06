@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class projectile : MonoBehaviour
 {
-                 //Floating point variable to store the player's movement speed.
-
+    //Floating point variable to store the player's movement speed.
+    public float force = 500f;
     private Rigidbody2D rigidBody;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     private CircleCollider2D mycollider;
     private GameObject pointer;
@@ -18,19 +18,21 @@ public class projectile : MonoBehaviour
     public Text nameText;
     Vector2 zero_vector;
     Vector2 vector_temp;
-    
+    private powerScript powScript;
     private timerScript timer;
     void Start()
-    { currentGarbage = 0;
+    {
+        currentGarbage = 0;
+        force = 500f;
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         garbage = new GameObject[transform.childCount];
         garbageCount = transform.childCount;
         initialPosition = transform.GetChild(0).position;
-        for(int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            garbage[i]= transform.GetChild(i).gameObject;
+            garbage[i] = transform.GetChild(i).gameObject;
         }
-
+        powScript = GameObject.Find("Scrollbar").GetComponent<powerScript>();
         rigidBody = garbage[0].GetComponent<Rigidbody2D>();
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
         nameText.text = garbage[currentGarbage].name;
@@ -43,33 +45,16 @@ public class projectile : MonoBehaviour
         //Debug.Log("Start Complete");
     }
 
-   
 
-    public void ShootProjectile() {
-   //     Debug.Log("Entered shootProjectile()\n");
-        if (rigidBody.isKinematic && pointer.GetComponent<SpriteRenderer>().enabled && (!timer.isTimeUp))
-        {
-     //       Debug.Log("Entered if in shoot");
-            
-                rigidBody.velocity = pointer.transform.position - garbage[currentGarbage].transform.position;
-                rigidBody.bodyType = RigidbodyType2D.Kinematic;
-                rigidBody.isKinematic = false;
-            //pointer.GetComponent<SpriteRenderer>().enabled = false ;
-            StartCoroutine(updateGun(currentGarbage));
 
-        }
-
-    }
-    public void ShootProjectilePower(float pow)
+    public void ShootProjectile()
     {
         //     Debug.Log("Entered shootProjectile()\n");
         if (rigidBody.isKinematic && pointer.GetComponent<SpriteRenderer>().enabled && (!timer.isTimeUp))
         {
             //       Debug.Log("Entered if in shoot");
-            Vector2 pos_vector= pointer.transform.position - garbage[currentGarbage].transform.position;
-            float x_comp = pow * (pos_vector[0] / Mathf.Sqrt(pos_vector[0] * pos_vector[0] + pos_vector[1] * pos_vector[1]));
-            float y_comp = pow * (pos_vector[1] / Mathf.Sqrt(pos_vector[0] * pos_vector[0] + pos_vector[1] * pos_vector[1]));
-            rigidBody.velocity = new Vector2(x_comp, y_comp);
+
+            rigidBody.velocity = force * powerScript.power * (pointer.transform.position - garbage[currentGarbage].transform.position) / (Vector2.Distance(garbage[currentGarbage].transform.position, pointer.transform.position));
             rigidBody.bodyType = RigidbodyType2D.Kinematic;
             rigidBody.isKinematic = false;
             //pointer.GetComponent<SpriteRenderer>().enabled = false ;
@@ -81,7 +66,7 @@ public class projectile : MonoBehaviour
 
     IEnumerator updateGun(int garbageIndex)
     {
-        
+
         yield return new WaitForSeconds(1);
         currentGarbage = currentGarbage + 1;
         if (currentGarbage < garbageCount)
@@ -91,7 +76,7 @@ public class projectile : MonoBehaviour
             rigidBody.bodyType = RigidbodyType2D.Kinematic;
             rigidBody.transform.position = initialPosition;
             nameText.text = garbage[currentGarbage].name;
-}
+        }
         else
         {
             yield return new WaitForSeconds(10);
@@ -100,13 +85,13 @@ public class projectile : MonoBehaviour
         }
 
         yield return new WaitForSeconds(9);//object deleted automatically after 10 seconds;
-        if(garbage[garbageIndex] != null)
+        if (garbage[garbageIndex] != null)
         {
             Destroy(garbage[garbageIndex]);
         }
-        
-        
+
+
     }
-    
+
 
 }
