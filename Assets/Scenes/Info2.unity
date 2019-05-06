@@ -419,7 +419,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: How to Shoot
+  m_Text: 'How to Shoot : Choose the direction with the help of red pointer and press
+    the dash at the right moment.'
 --- !u!222 &590840853
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1251,7 +1252,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time Limit
+  m_Text: 'Time Limit: Time limit is 1 minute each level.'
 --- !u!222 &1829588202
 CanvasRenderer:
   m_ObjectHideFlags: 0
