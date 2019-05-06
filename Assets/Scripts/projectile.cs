@@ -15,12 +15,13 @@ public class projectile : MonoBehaviour
     private Vector2 initialPosition;
     private int currentGarbage = 0;
     private int garbageCount = 0;
+    public Text nameText;
     Vector2 zero_vector;
     Vector2 vector_temp;
     
     private timerScript timer;
     void Start()
-    {
+    { currentGarbage = 0;
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         garbage = new GameObject[transform.childCount];
         garbageCount = transform.childCount;
@@ -32,6 +33,7 @@ public class projectile : MonoBehaviour
 
         rigidBody = garbage[0].GetComponent<Rigidbody2D>();
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
+        nameText.text = garbage[currentGarbage].name;
         pointer = GameObject.Find("pointer");
         zero_vector = Vector2.zero;
         shootButton = GameObject.Find("Button");
@@ -70,7 +72,8 @@ public class projectile : MonoBehaviour
             rigidBody.transform.position = initialPosition;
             rigidBody.bodyType = RigidbodyType2D.Kinematic;
             rigidBody.transform.position = initialPosition;
-        }
+            nameText.text = garbage[currentGarbage].name;
+}
         else
         {
             yield return new WaitForSeconds(10);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class dustbin : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class dustbin : MonoBehaviour
     private GameObject scoreObject;
     private GameObject timeObject;
     private timerScript timerScript;
+    
     void Start()
     { scoreObject = GameObject.Find("ScoreKeeper");
       scoreScript = scoreObject.GetComponent<score>() ;
